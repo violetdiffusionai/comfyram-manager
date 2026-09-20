@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>ComfyRAM Manager</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="hero-bg"><img src="assets/hero.jpg" alt="" class="hero-img" /></div>
+  <div class="scanlines"></div>
+  <div class="grid-bg"></div>
+
+  <header class="hud-header">
+    <div class="title-block">
+      <h1 class="glitch" data-text="COMFYRAM MANAGER">COMFYRAM MANAGER</h1>
+      <p class="subtitle">VRAM // KERNEL MEMORY WATCHDOG</p>
+      <p class="byline">by Violet Diffusion AI</p>
+    </div>
+    <div class="comfy-pill" id="comfyPill">
+      <span class="dot"></span><span id="comfyPillText">SCANNING</span>
+    </div>
+  </header>
+
+  <main class="panel">
+    <section class="gauges">
+      <div class="gauge" id="vramGauge">
+        <svg viewBox="0 0 120 120">
+          <circle class="ring-bg" cx="60" cy="60" r="52"></circle>
+          <circle class="ring-fill" id="vramRing" cx="60" cy="60" r="52"></circle>
+        </svg>
+        <div class="gauge-label">
+          <span class="gauge-value" id="vramValue">--%</span>
+          <span class="gauge-name">VRAM</span>
+          <span class="gauge-sub" id="vramSub">-- / -- MiB</span>
+        </div>
+      </div>
+      <div class="gauge" id="ramGauge">
+        <svg viewBox="0 0 120 120">
+          <circle class="ring-bg" cx="60" cy="60" r="52"></circle>
+          <circle class="ring-fill ring-ram" id="ramRing" cx="60" cy="60" r="52"></circle>
+        </svg>
+        <div class="gauge-label">
+          <span class="gauge-value" id="ramValue">--%</span>
+          <span class="gauge-name">RAM</span>
+          <span class="gauge-sub" id="ramSub">-- / -- GB</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="controls">
+      <button id="btnFree" class="btn btn-primary">
+        <span class="btn-icon">&#9889;</span> FREE VRAM NOW
+      </button>
+      <button id="btnClearRam" class="btn btn-secondary">
+        <span class="btn-icon">&#129504;</span> CLEAR RAM
+      </button>
+      <button id="btnDetect" class="btn btn-secondary">
+        <span class="btn-icon">&#128269;</span> AUTO-DETECT COMFYUI
+      </button>
+      <button id="btnSecurity" class="btn btn-secondary">
+        <span class="btn-icon">&#128737;</span> SECURITY SCAN
+      </button>
+      <button id="btnKillAll" class="btn btn-danger">
+        <span class="btn-icon">&#9760;</span> KILL ALL PYTHON &amp; CONTAINERS
+      </button>
+
+      <div class="toggle-row">
+        <label class="switch">
+          <input type="checkbox" id="autoGuardianToggle" checked />
+          <span class="slider"></span>
+        </label>
+        <span class="toggle-label">AUTO-GUARDIAN <em id="thresholdLabel">(clean @ 85% VRAM)</em></span>
+      </div>
+    </section>
+
+    <section class="security-panel" id="securityPanel">
+      <div class="sec-header" id="secHeader">SECURITY: NOT SCANNED</div>
+      <div class="sec-list" id="secList"></div>
+    </section>
+
+    <section class="console">
+      <div class="console-header">SYSTEM LOG</div>
+      <div class="console-body" id="consoleBody"></div>
+    </section>
+  </main>
+
+  <footer class="hud-footer">
+    <span>HOTKEY: <b>CTRL+ALT+F</b> — INSTANT CLEAN</span>
+    <span id="clock">--:--:--</span>
+  </footer>
+
+  <div class="modal-backdrop" id="confirmModal">
+    <div class="modal">
+      <h3 id="modalTitle">&#9888; TERMINATE ALL PYTHON + NVIDIA CONTAINERS?</h3>
+      <p>This force-kills every <code>python.exe</code> process (including ComfyUI) and the NVIDIA container services. Unsaved generations will be lost. This will also kill any other local AI tools running on python, and may disconnect Claude's Windows control extension.</p>
+      <div class="modal-actions">
+        <button id="modalCancel" class="btn btn-secondary">CANCEL</button>
+        <button id="modalConfirm" class="btn btn-danger">CONFIRM KILL</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

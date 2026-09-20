@@ -1,0 +1,39 @@
+{
+  "name": "comfyram-manager",
+  "version": "1.1.0",
+  "description": "ComfyRAM Manager by Violet Diffusion AI - cybernoir VRAM/RAM control panel",
+  "main": "main.js",
+  "author": "Violet Diffusion AI",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/violetdiffusionai/comfyram-manager.git"
+  },
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^32.3.3",
+    "electron-builder": "^25.1.8"
+  },
+  "allowScripts": {
+    "electron@32.3.3": true
+  },
+  "build": {
+    "appId": "ai.violetdiffusion.comfyram",
+    "productName": "ComfyRAM Manager",
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer/**/*",
+      "scripts/**/*"
+    ],
+    "asarUnpack": [
+      "scripts/**/*"
+    ],
+    "win": {
+      "target": "nsis"
+    }
+  }
+}
