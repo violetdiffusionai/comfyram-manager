@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "violinet-os": {
+      "type": "http",
+      "url": "http://127.0.0.1:8779/mcp",
+      "headers": {
+        "Authorization": "Bearer ${VIOLINET_MCP_TOKEN}"
+      }
+    }
+  }
+}
