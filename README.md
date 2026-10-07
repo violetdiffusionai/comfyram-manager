@@ -1,5 +1,7 @@
 # ComfyRAM Manager
 
+> **This repository is archived.** ComfyRAM Manager now lives at [Violinet-tech/comfyram-manager](https://github.com/Violinet-tech/comfyram-manager), with the current release and installer.
+
 A small cybernoir control panel for the memory ComfyUI is holding. It watches
 VRAM and system RAM, frees them on demand or on its own, and finds your running
 ComfyUI without being told where it is.
